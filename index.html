@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Link Generator</title>
+    <style>
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Custom Link</h1>
+    <form id="linkForm">
+        <label for="urlInput">Enter the Website URL:</label>
+        <input type="text" id="urlInput" placeholder="https://www.example.com" required>
+        <button type="submit">Generate Custom Link</button>
+    </form>
+    <div id="resultContainer">
+        <!-- Custom link will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById('linkForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            
+            var url = document.getElementById('urlInput').value; // Get the URL from the input field
+            
+            // Create the custom URL logic (for demonstration, we'll just append it to a base URL)
+            var baseUrl = 'https://your-server.com/custom-link?originalUrl=';
+            var customUrl = baseUrl + encodeURIComponent(url);
+            
+            // Display the custom link
+            var resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `<p>Click the link to view the custom page: <a href="${customUrl}" target="_blank">${customUrl}</a></p>`;
+        });
+    </script>
+</body>
+</html>
